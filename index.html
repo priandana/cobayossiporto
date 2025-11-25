@@ -996,6 +996,66 @@
         font-size: 25px;
       }
     }
+
+    /* === PERINGAN HEADER DI HP === */
+@media (max-width: 600px) {
+  /* Kurangi padding & bayangan navbar */
+  .page {
+    padding-top: 10px;
+  }
+
+  .navbar {
+    position: static;       /* tidak perlu sticky di HP */
+    margin-bottom: 8px;
+  }
+
+  .navbar-inner {
+    padding: 6px 10px;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    gap: 10px;
+  }
+
+  /* Brand dibuat lebih kecil */
+  .brand-tagline {
+    display: none;          /* buang teks kecil "Content Creator & Designer" */
+  }
+
+  .brand-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
+  /* Menu diperingkas – hanya tombol "Hubungi Saya" yang tampil */
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    padding: 5px 9px;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    display: none;          /* sembunyikan Tentang/Layanan/Portofolio/Klien di HP */
+  }
+
+  .nav-cta {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* Hero naik sedikit supaya judul lebih cepat kelihatan */
+  .hero {
+    margin-top: 18px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1503,3 +1563,4 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
