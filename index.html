@@ -644,14 +644,22 @@
     }
 
     .portfolio-thumb {
-      background: #f1f1f1;
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
+  background: #f1f1f1;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--muted);
+  overflow: hidden;           /* penting biar gambar kepotong rapi */
+}
+
+.portfolio-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* isi penuh kotak, tanpa gepeng */
+  display: block;
+}
 
     .portfolio-body {
       padding: 10px 13px 12px;
@@ -1240,61 +1248,67 @@
         </div>
 
         <div class="portfolio-grid">
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (feed campaign A)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Feed Campaign Promo 11.11</h3>
-              <p class="portfolio-meta">Social media feed · 10 slide carousel</p>
-            </div>
-          </article>
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (story series)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Story Edukasi Skincare</h3>
-              <p class="portfolio-meta">Story template · 7 desain</p>
-            </div>
-          </article>
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (poster)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Poster Workshop Online</h3>
-              <p class="portfolio-meta">Poster digital & feed</p>
-            </div>
-          </article>
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (slide)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Slide Presentasi Brand</h3>
-              <p class="portfolio-meta">Deck presentasi · 15 slide</p>
-            </div>
-          </article>
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (template canva)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Template Canva Konten Harian</h3>
-              <p class="portfolio-meta">Template siap pakai · editable</p>
-            </div>
-          </article>
-          <article class="portfolio-item">
-            <div class="portfolio-thumb">
-              Ganti dengan gambar desain kamu (reels cover)
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-title">Reels Cover Consistent Style</h3>
-              <p class="portfolio-meta">Cover video · 12 desain</p>
-            </div>
-          </article>
-        </div>
+  <article class="portfolio-item">
+    <div class="portfolio-thumb">
+      <img src="https://imgur.com/a/3YyxFXh" alt="Portofolio Yossi Yostiani - Feed Campaign Promo 11.11">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Feed Campaign Promo 11.11</h3>
+      <p class="portfolio-meta">Social media feed · 10 slide carousel</p>
+    </div>
+  </article>
+
+  <article class="portfolio-item">
+    <div class="portfolio-thumb">
+      <img src="https://imgur.com/a/3YyxFXh" alt="Portofolio Yossi Yostiani - Story Edukasi Skincare">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Story Edukasi Skincare</h3>
+      <p class="portfolio-meta">Story template · 7 desain</p>
+    </div>
+  </article>
+
+  <article class="portfolio-item">
+    <div class="https://imgur.com/a/3YyxFXh">
+      <img src="/porto-yossi.png" alt="Portofolio Yossi Yostiani - Poster Workshop Online">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Poster Workshop Online</h3>
+      <p class="portfolio-meta">Poster digital & feed</p>
+    </div>
+  </article>
+
+  <article class="portfolio-item">
+    <div class="portfolio-thumb">
+      <img src="https://imgur.com/a/3YyxFXh" alt="Portofolio Yossi Yostiani - Slide Presentasi Brand">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Slide Presentasi Brand</h3>
+      <p class="portfolio-meta">Deck presentasi · 15 slide</p>
+    </div>
+  </article>
+
+  <article class="portfolio-item">
+    <div class="portfolio-thumb">
+      <img src="https://imgur.com/a/3YyxFXh" alt="Portofolio Yossi Yostiani - Template Canva Konten Harian">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Template Canva Konten Harian</h3>
+      <p class="portfolio-meta">Template siap pakai · editable</p>
+    </div>
+  </article>
+
+  <article class="portfolio-item">
+    <div class="portfolio-thumb">
+      <img src="https://imgur.com/a/3YyxFXh" alt="Portofolio Yossi Yostiani - Reels Cover Consistent Style">
+    </div>
+    <div class="portfolio-body">
+      <h3 class="portfolio-title">Reels Cover Consistent Style</h3>
+      <p class="portfolio-meta">Cover video · 12 desain</p>
+    </div>
+  </article>
+</div>
+
 
         <!-- PORTFOLIO VIDEO TIKTOK (CAROUSEL) -->
         <div class="section-header" style="margin-top:32px;">
@@ -1563,4 +1577,5 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
