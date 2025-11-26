@@ -84,6 +84,40 @@
       100% { transform: translateX(120%); }
     }
 
+    /* Shimmer di tombol WhatsApp (BARU) */
+.btn-contact-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(123,140,255,0.35),
+    rgba(255,255,255,0.1),
+    rgba(255,122,196,0.25)
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  animation: btnShimmer 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Animasi shimmer tombol WhatsApp (BARU) */
+@keyframes btnShimmer {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(140%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
     /* Scroll reveal */
     .reveal {
       opacity: 0;
@@ -1080,17 +1114,19 @@
     }
 
     .btn-contact-primary {
-      border-radius: 999px;
-      padding: 9px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      background: #ffffff;
-      color: var(--accent2);
-      box-shadow: 0 13px 30px rgba(0,0,0,0.25);
-      transition: var(--transition);
-    }
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+  color: var(--accent2);
+  box-shadow: 0 13px 30px rgba(0,0,0,0.25);
+  transition: var(--transition);
+  position: relative;         /* BARU: buat shimmer */
+  overflow: hidden;           /* BARU: biar shimmer ga keluar tombol */
+}
 
     .btn-contact-primary:hover {
       transform: translateY(-1px);
@@ -1203,6 +1239,26 @@
         right: 4px;
       }
     }
+
+    /* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Scroll reveal dari kiri untuk section (BARU) */
+.reveal.reveal-left {
+  transform: translate3d(-26px, 0, 0);
+}
+
+.reveal.reveal-left.visible {
+  transform: translate3d(0, 0, 0);
+}
 
     /* === PERINGAN HEADER DI HP + LAYOUT MOBILE === */
     @media (max-width: 600px) {
@@ -1415,7 +1471,7 @@
       </section>
 
       <!-- ABOUT -->
-      <section id="about" class="reveal">
+      <section id="about" class="reveal reveal-left">
         <div class="section-header">
           <p class="section-eyebrow">Tentang saya</p>
           <h2 class="section-title">Designer yang suka visual colourful & clean</h2>
@@ -1465,7 +1521,7 @@
       </section>
 
       <!-- SERVICES -->
-      <section id="services" class="reveal">
+      <section id="services" class="reveal reveal-left">
         <div class="section-header">
           <p class="section-eyebrow">Layanan</p>
           <h2 class="section-title">Apa yang bisa aku bantu?</h2>
@@ -1503,7 +1559,7 @@
       </section>
 
       <!-- PORTFOLIO (IMAGE) -->
-      <section id="portfolio" class="reveal">
+      <section id="portfolio" class="reveal reveal-left">
         <div class="section-header">
           <p class="section-eyebrow">Portofolio</p>
           <h2 class="section-title">Beberapa contoh desain</h2>
@@ -1700,7 +1756,7 @@
       </section>
 
       <!-- TESTIMONIALS -->
-      <section id="testimonials" class="reveal">
+      <section id="testimonials" class="reveal reveal-left">
         <div class="section-header">
           <p class="section-eyebrow">Klien & Testimoni</p>
           <h2 class="section-title">Apa kata mereka?</h2>
@@ -1732,7 +1788,7 @@
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="reveal">
+      <section id="contact" class="reveal reveal-left">
         <div class="contact-cta">
           <div>
             <h2 class="contact-title">Siap mulai project bareng?</h2>
@@ -1900,4 +1956,5 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
