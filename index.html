@@ -463,6 +463,62 @@
       gap: 16px;
       font-size: 12px;
     }
+    /* === HERO SOCIAL PROOF (BARU) === */
+.hero-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.hero-social-label {
+  color: var(--muted);
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 11px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.social-pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.social-pill-tiktok {
+  color: #111827;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(17,24,39,0.92));
+  color: #f9fafb;
+}
+
+.social-pill-tiktok .dot {
+  background: linear-gradient(135deg, #25f4ee, #fe2c55);
+}
+
+.social-pill-ig {
+  background: linear-gradient(135deg, #ff9a62, #ff5b99);
+  color: #fff;
+}
+
+.social-pill-ig .dot {
+  background: #fff;
+}
+
+.social-pill:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.14);
+}
 
     .stat-pill {
       padding: 10px 14px;
@@ -1272,6 +1328,14 @@
       .skills-ticker-track {
     animation-duration: 24s; /* sebelumnya 18s, jadi lebih pelan di HP */
   }
+        .hero-social {
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .social-pill {
+    padding: 5px 9px;
+  }
 
       .navbar {
         position: static;
@@ -1400,6 +1464,16 @@
           <div class="hero-buttons">
             <a href="#portfolio" class="btn-primary">Lihat Portofolio</a>
             <a href="#contact" class="btn-ghost">Chat untuk kerja sama →</a>
+          </div>
+                    <!-- Social proof: aktif di TikTok & Instagram (BARU) -->
+          <div class="hero-social">
+            <span class="hero-social-label">Aktif di:</span>
+            <a href="https://www.tiktok.com/@ossiyostiani" target="_blank" class="social-pill social-pill-tiktok">
+              <span class="dot"></span> TikTok @ossiyostiani
+            </a>
+            <a href="https://www.instagram.com/yossiyostiani" target="_blank" class="social-pill social-pill-ig">
+              <span class="dot"></span> Instagram @username_ig_kamu
+            </a>
           </div>
 
           <div class="hero-stats">
@@ -1958,6 +2032,7 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
