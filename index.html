@@ -56,6 +56,8 @@
       max-width: 1120px;
       margin: 0 auto;
       padding: 18px 18px 60px;
+      position: relative;
+      z-index: 1;
     }
 
     /* ============= ANIMATIONS ============= */
@@ -94,11 +96,83 @@
       transform: translateY(0);
     }
 
+    /* === FLOATING BACKGROUND BUBBLES (BARU) === */
+    .float-circle {
+      position: fixed;
+      border-radius: 999px;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.65;
+      filter: blur(2px);
+      z-index: 0;
+      animation: orbitSoft 24s linear infinite;
+    }
+
+    .float-circle-1 {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,122,196,0.45), transparent 65%);
+      top: -60px;
+      left: -40px;
+    }
+
+    .float-circle-2 {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 30% 30%, rgba(123,140,255,0.45), transparent 65%);
+      bottom: 60px;
+      right: -40px;
+      animation-duration: 30s;
+      animation-delay: -4s;
+    }
+
+    .float-circle-3 {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,207,86,0.45), transparent 65%);
+      top: 45%;
+      left: 65%;
+      animation-duration: 28s;
+      animation-delay: -8s;
+    }
+
+    @keyframes orbitSoft {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate3d(24px, 18px, 0) rotate(6deg);
+      }
+      100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+    }
+
+    /* === SCROLL PROGRESS BAR (BARU) === */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      z-index: 90;
+      pointer-events: none;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      box-shadow: 0 0 12px rgba(123,140,255,0.6);
+      border-radius: 0 0 999px 999px;
+      transition: width 0.12s ease-out;
+    }
+
     /* ============= NAVBAR ============= */
 
     .navbar {
       position: sticky;
-      top: 0;
+      top: 8px;
       z-index: 50;
       margin-bottom: 18px;
       pointer-events: none;
@@ -372,6 +446,69 @@
       box-shadow: 0 16px 32px rgba(0,0,0,0.12);
     }
 
+    /* === SKILLS TICKER (BARU) === */
+    .skills-ticker {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      padding: 8px 0;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .skills-ticker::before,
+    .skills-ticker::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .skills-ticker::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg) 0, transparent 100%);
+    }
+
+    .skills-ticker::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg) 0, transparent 100%);
+    }
+
+    .skills-ticker-track {
+      display: flex;
+      gap: 22px;
+      white-space: nowrap;
+      animation: tickerMove 18s linear infinite;
+      padding-inline: 28px;
+    }
+
+    .skills-ticker-item {
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent2);
+    }
+
+    @keyframes tickerMove {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     .stat-number {
       font-weight: 700;
       font-size: 17px;
@@ -434,6 +571,12 @@
       font-size: 13px;
       color: var(--muted);
       position: relative;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero-tag-floating {
@@ -644,22 +787,58 @@
     }
 
     .portfolio-thumb {
-  background: #f1f1f1;
-  aspect-ratio: 4/3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: var(--muted);
-  overflow: hidden;           /* penting biar gambar kepotong rapi */
-}
+      background: #f1f1f1;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+      overflow: hidden;
+      position: relative;
+    }
 
-.portfolio-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* isi penuh kotak, tanpa gepeng */
-  display: block;
-}
+    .portfolio-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .portfolio-hover {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .portfolio-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--accent2);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+    }
+
+    .portfolio-item:hover .portfolio-hover {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .portfolio-item:hover .portfolio-thumb img {
+      transform: scale(1.05);
+    }
 
     .portfolio-body {
       padding: 10px 13px 12px;
@@ -758,7 +937,7 @@
       font-size: 18px;
       color: var(--muted);
       transition: var(--transition);
-      z-index: 9999;
+      z-index: 20;
       pointer-events: auto;
     }
 
@@ -958,6 +1137,41 @@
       text-align: center;
     }
 
+    /* === BACK TO TOP BUTTON (BARU) === */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: none;
+      background: #ffffff;
+      color: var(--accent2);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      z-index: 80;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.26);
+      transform: translateY(-2px);
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
@@ -990,83 +1204,93 @@
       }
     }
 
+    /* === PERINGAN HEADER DI HP + LAYOUT MOBILE === */
     @media (max-width: 600px) {
       .page {
         padding-inline: 14px;
+        padding-top: 10px;
       }
+
+      .navbar {
+        position: static;
+        margin-bottom: 8px;
+      }
+
       .navbar-inner {
-        padding-inline: 14px;
+        padding: 6px 10px;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        gap: 10px;
       }
+
+      .brand-tagline {
+        display: none;
+      }
+
+      .brand-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        padding: 5px 9px;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
       section {
         margin-top: 40px;
       }
+
+      .hero {
+        margin-top: 18px;
+      }
+
       .hero-title {
         font-size: 25px;
       }
+
+      .skills-ticker {
+        margin-top: 12px;
+      }
+
+      .back-to-top {
+        bottom: 18px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+      }
     }
-
-    /* === PERINGAN HEADER DI HP === */
-@media (max-width: 600px) {
-  /* Kurangi padding & bayangan navbar */
-  .page {
-    padding-top: 10px;
-  }
-
-  .navbar {
-    position: static;       /* tidak perlu sticky di HP */
-    margin-bottom: 8px;
-  }
-
-  .navbar-inner {
-    padding: 6px 10px;
-    border-radius: 16px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-    gap: 10px;
-  }
-
-  /* Brand dibuat lebih kecil */
-  .brand-tagline {
-    display: none;          /* buang teks kecil "Content Creator & Designer" */
-  }
-
-  .brand-avatar {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
-  }
-
-  .brand-name {
-    font-size: 14px;
-  }
-
-  /* Menu diperingkas – hanya tombol "Hubungi Saya" yang tampil */
-  .nav-links {
-    gap: 8px;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    padding: 5px 9px;
-  }
-
-  .nav-links a:not(.nav-cta) {
-    display: none;          /* sembunyikan Tentang/Layanan/Portofolio/Klien di HP */
-  }
-
-  .nav-cta {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-
-  /* Hero naik sedikit supaya judul lebih cepat kelihatan */
-  .hero {
-    margin-top: 18px;
-  }
-}
-
   </style>
 </head>
 <body>
+  <!-- === SCROLL PROGRESS BAR (BARU) === -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- === FLOATING BUBBLES BACKGROUND (BARU) === -->
+  <div class="float-circle float-circle-1"></div>
+  <div class="float-circle float-circle-2"></div>
+  <div class="float-circle float-circle-3"></div>
+
   <div class="page">
     <!-- NAVBAR -->
     <header class="navbar">
@@ -1128,6 +1352,44 @@
             <div class="stat-pill">
               <span class="stat-number">3+</span>
               <span class="stat-label">Tahun pengalaman</span>
+            </div>
+          </div>
+
+          <!-- === SKILLS TICKER BERGERAK (BARU) === -->
+          <div class="skills-ticker">
+            <div class="skills-ticker-track">
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Reels & TikTok hook
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Desain carousel edukasi
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Template Canva editable
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Mini branding kit
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Konten promo & campaign
+              </span>
+
+              <!-- Duplikat untuk loop halus -->
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Reels & TikTok hook
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Desain carousel edukasi
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Template Canva editable
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Mini branding kit
+              </span>
+              <span class="skills-ticker-item">
+                <span class="skills-dot"></span> Konten promo & campaign
+              </span>
             </div>
           </div>
         </div>
@@ -1248,67 +1510,84 @@
         </div>
 
         <div class="portfolio-grid">
-  <article class="portfolio-item">
-    <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Feed Campaign Promo 11.11</h3>
-      <p class="portfolio-meta">Social media feed · 10 slide carousel</p>
-    </div>
-  </article>
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Feed Campaign Promo 11.11</h3>
+              <p class="portfolio-meta">Social media feed · 10 slide carousel</p>
+            </div>
+          </article>
 
-  <article class="portfolio-item">
-    <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Story Edukasi Skincare</h3>
-      <p class="portfolio-meta">Story template · 7 desain</p>
-    </div>
-  </article>
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Story Edukasi Skincare</h3>
+              <p class="portfolio-meta">Story template · 7 desain</p>
+            </div>
+          </article>
 
-  <article class="portfolio-item">
-   <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Poster Workshop Online</h3>
-      <p class="portfolio-meta">Poster digital & feed</p>
-    </div>
-  </article>
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Poster Workshop Online</h3>
+              <p class="portfolio-meta">Poster digital & feed</p>
+            </div>
+          </article>
 
-  <article class="portfolio-item">
-    <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Slide Presentasi Brand</h3>
-      <p class="portfolio-meta">Deck presentasi · 15 slide</p>
-    </div>
-  </article>
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Slide Presentasi Brand</h3>
+              <p class="portfolio-meta">Deck presentasi · 15 slide</p>
+            </div>
+          </article>
 
-  <article class="portfolio-item">
-    <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Template Canva Konten Harian</h3>
-      <p class="portfolio-meta">Template siap pakai · editable</p>
-    </div>
-  </article>
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Template Canva Konten Harian</h3>
+              <p class="portfolio-meta">Template siap pakai · editable</p>
+            </div>
+          </article>
 
-  <article class="portfolio-item">
-    <div class="portfolio-thumb">
-  <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
-</div>
-    <div class="portfolio-body">
-      <h3 class="portfolio-title">Reels Cover Consistent Style</h3>
-      <p class="portfolio-meta">Cover video · 12 desain</p>
-    </div>
-  </article>
-</div>
-
+          <article class="portfolio-item">
+            <div class="portfolio-thumb">
+              <img src="/CONTOH GAMBAR YOSSI YOSTIANI.png" alt="Portofolio Yossi Yostiani">
+              <div class="portfolio-hover">
+                <span class="portfolio-icon">▶</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3 class="portfolio-title">Reels Cover Consistent Style</h3>
+              <p class="portfolio-meta">Cover video · 12 desain</p>
+            </div>
+          </article>
+        </div>
 
         <!-- PORTFOLIO VIDEO TIKTOK (CAROUSEL) -->
         <div class="section-header" style="margin-top:32px;">
@@ -1482,6 +1761,9 @@
     </footer>
   </div>
 
+  <!-- BACK TO TOP BUTTON (BARU) -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Kembali ke atas">↑</button>
+
   <script>
     // Tahun otomatis
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1500,6 +1782,43 @@
       { threshold: 0.2 }
     );
     revealElements.forEach((el) => observer.observe(el));
+
+    // === SCROLL PROGRESS BAR (BARU) ===
+    const scrollBar = document.getElementById("scrollProgressBar");
+    if (scrollBar) {
+      const updateScrollBar = () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY || document.documentElement.scrollTop || 0;
+        const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
+        scrollBar.style.width = progress + "%";
+      };
+
+      window.addEventListener("scroll", updateScrollBar);
+      window.addEventListener("resize", updateScrollBar);
+      updateScrollBar();
+    }
+
+    // === BACK TO TOP BUTTON (BARU) ===
+    const backBtn = document.getElementById("backToTop");
+    if (backBtn) {
+      const toggleBackBtn = () => {
+        if (window.scrollY > 400) {
+          backBtn.classList.add("show");
+        } else {
+          backBtn.classList.remove("show");
+        }
+      };
+
+      window.addEventListener("scroll", toggleBackBtn);
+      toggleBackBtn();
+
+      backBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    }
 
     // ====== LOGIC CAROUSEL TIKTOK ======
     (function() {
@@ -1577,10 +1896,3 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
