@@ -59,7 +59,56 @@
       position: relative;
       z-index: 1;
     }
+.logo-strip {
+  overflow: hidden;
+  width: 100%;
+  padding: 16px 0;
+  position: relative;
+}
 
+.logo-track {
+  display: flex;
+  gap: 42px;
+  align-items: center;
+  animation: scrollLogos 28s linear infinite;
+}
+
+.logo-track img {
+  height: 42px;
+  opacity: 0.75;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  filter: grayscale(100%);
+}
+
+.logo-track img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* mobile tweak */
+@media (max-width: 600px) {
+  .logo-track img {
+    height: 32px;
+    gap: 28px;
+  }
+}
+.logo-strip:hover .logo-track {
+  animation-play-state: paused;
+}
+
+  @media (prefers-reduced-motion: reduce) {
+  .logo-track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
     /* ============= ANIMATIONS ============= */
 
     @keyframes slideInNav {
@@ -1921,7 +1970,28 @@
           </div>
         </div>
       </div>
+      
+<section id="clients" class="reveal reveal-left">
+  <div class="section-header">
+    <p class="section-eyebrow">Klien</p>
+    <h2 class="section-title">Brand yang pernah bekerja sama</h2>
+  </div>
 
+  <div class="logo-strip">
+    <div class="logo-track">
+      <img src="/public/1747503.png" alt="Client Logo" />
+      <img src="/public/Lowongan Kerja Bank BRI Desember 2023.jpg" alt="Client Logo" />
+      <img src="/public/footer-logo.png" alt="Client Logo" />]
+
+      <!-- DUPLICATE untuk looping mulus -->
+      <img src="/public/1747503.png" alt="Client Logo" />
+      <img src="/public/Lowongan Kerja Bank BRI Desember 2023.jpg" alt="Client Logo" />
+      <img src="/public/footer-logo.png" alt="Client Logo" />
+    </div>
+  </div>
+</section>
+
+      
       <!-- TESTIMONIALS -->
       <section id="testimonials" class="reveal reveal-left">
         <div class="section-header">
@@ -2237,6 +2307,7 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
