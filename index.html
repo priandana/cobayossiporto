@@ -869,13 +869,16 @@
 /* RATIO 9:16 SEPERTI REELS */
 .portfolio-thumb {
   background: #f1f1f1;
-  aspect-ratio: 9 / 16;           /* ✅ ini yang bikin portrait */
+  aspect-ratio: 9 / 16;
+  max-height: 420px; /* ✅ batas tinggi */
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 22px;            /* biar tetap smooth */
 }
+
 
 
 .portfolio-thumb img {
