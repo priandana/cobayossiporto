@@ -458,20 +458,22 @@
     }
 
     .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 12px;
-    }
-    /* === HERO SOCIAL PROOF (BARU) === */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  margin-top: 18px;          /* tambahin jarak dari tombol */
+}
+
 .hero-social {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 14px;          /* jarak dari stat */
   font-size: 11px;
 }
+
 
 .hero-social-label {
   color: var(--muted);
@@ -1324,6 +1326,23 @@
         padding-inline: 14px;
         padding-top: 10px;
       }
+        .hero-social {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .social-pill {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .hero-social-label {
+    font-size: 11px;
+  }
+
 
       .skills-ticker-track {
     animation-duration: 24s; /* sebelumnya 18s, jadi lebih pelan di HP */
@@ -1465,16 +1484,7 @@
             <a href="#portfolio" class="btn-primary">Lihat Portofolio</a>
             <a href="#contact" class="btn-ghost">Chat untuk kerja sama →</a>
           </div>
-                    <!-- Social proof: aktif di TikTok & Instagram (BARU) -->
-          <div class="hero-social">
-            <span class="hero-social-label">Aktif di:</span>
-            <a href="https://www.tiktok.com/@ossiyostiani" target="_blank" class="social-pill social-pill-tiktok">
-              <span class="dot"></span> TikTok @ossiyostiani
-            </a>
-            <a href="https://www.instagram.com/yossiyostiani" target="_blank" class="social-pill social-pill-ig">
-              <span class="dot"></span> Instagram @username_ig_kamu
-            </a>
-          </div>
+                    
 
           <div class="hero-stats">
             <div class="stat-pill">
@@ -1489,6 +1499,17 @@
               <span class="stat-number">3+</span>
               <span class="stat-label">Tahun pengalaman</span>
             </div>
+          </div>
+
+          <!-- Social proof: aktif di TikTok & Instagram (BARU) -->
+          <div class="hero-social">
+            <span class="hero-social-label">Aktif di:</span>
+            <a href="https://www.tiktok.com/@ossiyostiani" target="_blank" class="social-pill social-pill-tiktok">
+              <span class="dot"></span> TikTok @ossiyostiani
+            </a>
+            <a href="https://www.instagram.com/yossiyostiani" target="_blank" class="social-pill social-pill-ig">
+              <span class="dot"></span> Instagram @yossiyostiani
+            </a>
           </div>
 
           <!-- === SKILLS TICKER BERGERAK (BARU) === -->
@@ -2032,6 +2053,7 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
