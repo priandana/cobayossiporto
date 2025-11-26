@@ -1253,12 +1253,14 @@
 }
 /* Scroll reveal dari kiri untuk section (BARU) */
 .reveal.reveal-left {
-  transform: translate3d(-26px, 0, 0);
+  transform: translate3d(-18px, 0, 0);
 }
 
 .reveal.reveal-left.visible {
   transform: translate3d(0, 0, 0);
+  transition-duration: 0.9s; /* sedikit lebih pelan */
 }
+
 
     /* === PERINGAN HEADER DI HP + LAYOUT MOBILE === */
     @media (max-width: 600px) {
@@ -1956,5 +1958,6 @@
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
+
 
 
